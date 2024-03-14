@@ -23,19 +23,33 @@ import random
 # stamp()	None	Leaves an impression of a turtle shape at the current location	tommy.stamp()
 # shape()	shapename	Should be 'arrow', 'classic', 'turtle', or 'circle'	tommy.shape("turtle")
 
-t=turtle.turtle()
-t.color('blue')
-u=turtle.turtle()
+t=turtle.Turtle()
+t.color('red')
+u=turtle.Turtle()
 u.color('blue')
-r=turtle.turtle()
-r.color('blue')
+r=turtle.Turtle()
+r.color('orange')
+l=turtle.Turtle()
+l.color('purple')
 
 t.penup()
-t.goto(-50,-50)
+t.goto(-250,-155)
 t.pendown()
-t.color('black')
-t.forward(100)
+t.color('light grey')
+t.width(10)
+t.forward(400)
+t.color('red')
 t.penup()
 
+turtles=[t,u,r,l]
+
+for tur in turtles:
+    tur.penup()
+    tur.goto(-200+(turtles.index(tur)*100),-150)
+    tur.setheading(90)
+    tur.pendown()
+    tur.forward(200)
+
+while
 
 turtle.Screen().exitonclick()
