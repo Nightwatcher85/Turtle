@@ -1,3 +1,6 @@
+#Gregory Jepsen
+#Turtle Racing
+
 import turtle
 import random
 # Method
@@ -23,6 +26,7 @@ import random
 # stamp()	None	Leaves an impression of a turtle shape at the current location	tommy.stamp()
 # shape()	shapename	Should be 'arrow', 'classic', 'turtle', or 'circle'	tommy.shape("turtle")
 
+#Assignes turtles.  Improvement would be to get the number of racers from the user and assign colors randomly with RGB values.
 t=turtle.Turtle()
 t.color('red')
 u=turtle.Turtle()
@@ -31,9 +35,12 @@ r=turtle.Turtle()
 r.color('orange')
 l=turtle.Turtle()
 l.color('purple')
+e=turtle.Turtle()
+e.color('pink')
 
+#Draws starting line
 t.penup()
-t.goto(-250,-155)
+t.goto(-250,-140)
 t.pendown()
 t.color('light grey')
 t.width(10)
@@ -41,15 +48,47 @@ t.forward(400)
 t.color('red')
 t.penup()
 
-turtles=[t,u,r,l]
+#Draws finishline
+y=190
+t.width(5)
+for j in range(4):
+    t.goto(-250, y)
+    t.pendown()
+    for i in range(81):
+        if t.color()[0]=='black':
+            t.color('white')
+        else:
+            t.color('black')
+        t.fd(5)
+    y+=5
+    t.penup()
+t.color('red')
 
+turtles=[t,u,r,l,e]
+
+#Gets tutrles to starting line
+turYCor=[]
 for tur in turtles:
+    tur.shape('turtle')
+    tur.width(7)
     tur.penup()
-    tur.goto(-200+(turtles.index(tur)*100),-150)
+    tur.goto(-200+(turtles.index(tur)*(300/(len(turtles)-1))),-150)
     tur.setheading(90)
     tur.pendown()
-    tur.forward(200)
+    turYCor.append(tur.ycor())
 
-while
+input("Press Enter to start race")
+#Races
+while max(turYCor)<=200:
+    for tur in turtles:
+        inc=random.randint(1,10)
+        turYCor[turtles.index(tur)]+=inc
+        tur.fd(inc)
+
+index=turYCor.index(max(turYCor))
+
+#Added Names to the turtles
+names=['Katie','Greg','Chloe','Luke','Ella']
+print(names[index], 'Won!!!')
 
 turtle.Screen().exitonclick()
